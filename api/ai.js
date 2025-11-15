@@ -45,9 +45,9 @@ module.exports = async function handler(req, res) {
 
     const data = await response.json();
 
-    return res.status(200).json({
-      response: data.choices?.[0]?.message?.content || "No response"
-    });
+    const reply = data?.choices?.[0]?.message?.content || "No response";
+
+    return res.status(200).json({ response: reply });
 
   } catch (error) {
     console.error("Server Error:", error);
